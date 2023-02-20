@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Count Challenge</string>
+    <string name="hint">今日のお昼ご飯</string>
 </resources>
