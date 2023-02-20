@@ -30,9 +30,7 @@ class MainActivity : AppCompatActivity() {
         val counted = pref.getInt("count",0)
         number = counted
 
-        if(number%2 ==1){
-            binding.numberTextview.setTextColor(Color.BLUE)}
-
+        if(number%2 ==1){ binding.numberTextview.setTextColor(Color.BLUE)}
         binding.numberTextview.text = number.toString()
 
         val audioAttributes = AudioAttributes.Builder()
@@ -46,6 +44,11 @@ class MainActivity : AppCompatActivity() {
             .setMaxStreams(1)
             .build()
         soundID = mSoundPool.load(this, R.raw.sound, 1)
+
+        binding.resetButton.setOnClickListener{
+            number =0
+            binding.numberTextview.text = number.toString()
+        }
 
         //UPボタンが押された時
         binding.upButton.setOnClickListener{
@@ -62,6 +65,11 @@ class MainActivity : AppCompatActivity() {
                 1 ->{binding.numberTextview.setTextColor(Color.BLUE)
                     mSoundPool.play(soundID, 1.0f, 1.0f, 0, 0, 1.0f)}
             }
+        }
+        binding.resetButton.setOnClickListener{
+            number =0
+            binding.numberTextview.setTextColor(Color.RED)
+            binding.numberTextview.text = number.toString()
         }
     }
 }
